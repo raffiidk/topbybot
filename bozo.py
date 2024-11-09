@@ -60,7 +60,7 @@ print(len(markets))
 writejson(markets)
 
 delay = 10
-bozo = DiscordWebhook(url ="https://discord.com/api/webhooks/816987768013717514/mWa8D2QrFVVSawdb90upxM3xD8mwDd-IY4osf9iyAM-GSFC1kysfKTfmQkQF859jgZhC",content = " stuff: {}".format(type(markets))
+bozo = DiscordWebhook(url ="https://discord.com/api/webhooks/816987768013717514/mWa8D2QrFVVSawdb90upxM3xD8mwDd-IY4osf9iyAM-GSFC1kysfKTfmQkQF859jgZhC",content = " stuff: {}".format(type(markets)))
 xxx = bozo.execute()
 
 while True:
