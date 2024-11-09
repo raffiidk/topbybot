@@ -47,7 +47,7 @@ def check(last,checkval): #Check for a change in the latest stock reading and th
     return changeDetected, newMarket
             
     
-jsonFile = input("file")
+jsonFile = 'data.json'
 wChannel = 812153914325467146
 
 url = "https://gamma-api.polymarket.com/events?limit=20&active=true&archived=false&tag_slug=middle-east&closed=false&order=volume24hr&ascending=false&offset=0"
