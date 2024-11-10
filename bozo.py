@@ -88,7 +88,7 @@ while True:
     # r2 = webhookTest.execute()
     with open(reset,"r+") as f:
         resetData = json.load(f)
-        writeData(reset,jsonFile)
+        writeData(resetData,jsonFile)
     
     writejson(recentMarkets)
     time.sleep(delay)
