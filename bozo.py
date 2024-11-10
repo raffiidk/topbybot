@@ -56,10 +56,12 @@ postReq = requests.get(url)
 markets = postReq.json()
 URL = "https://discord.com/api/webhooks/816987768013717514/mWa8D2QrFVVSawdb90upxM3xD8mwDd-IY4osf9iyAM-GSFC1kysfKTfmQkQF859jgZhC"
 
+reset = 'static.json'
+
 print(len(markets))
 writejson(markets)
 
-delay = 10
+delay = 15
 bozo = DiscordWebhook(url ="https://discord.com/api/webhooks/816987768013717514/mWa8D2QrFVVSawdb90upxM3xD8mwDd-IY4osf9iyAM-GSFC1kysfKTfmQkQF859jgZhC",content = " stuff: {}".format(type(markets)))
 xxx = bozo.execute()
 
@@ -84,7 +86,10 @@ while True:
     # print(returnMessage)
     # webhookTest = DiscordWebhook(url ="https://discord.com/api/webhooks/816987768013717514/mWa8D2QrFVVSawdb90upxM3xD8mwDd-IY4osf9iyAM-GSFC1kysfKTfmQkQF859jgZhC",content = "``` New Market \n Name: {} \n Creation Time: {} ```".format(returnMessage[0],returnMessage[1]))
     # r2 = webhookTest.execute()
-
+    with open(reset,"r+") as f:
+        resetData = json.load(f)
+        writeData(reset,jsonFile)
+    
     writejson(recentMarkets)
     time.sleep(delay)
 
