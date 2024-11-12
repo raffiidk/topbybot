@@ -33,14 +33,14 @@ def check(last,checkval): #Check for a change in the latest stock reading and th
     newMarket = 0
     titles = []
     for j in last:
-        titles.append(j['title'])
+        ids.append(j['id'])
 
     if last == checkval:
         return changeDetected, newMarket
     if checkval != last:
         
         for i in checkval:
-            if i['title'] not in titles:
+            if i['id'] not in ids:
                 changeDetected = True
                 newMarket = i
                 return changeDetected, newMarket
@@ -50,7 +50,7 @@ def check(last,checkval): #Check for a change in the latest stock reading and th
 jsonFile = 'data.json'
 wChannel = 812153914325467146
 
-url = "https://gamma-api.polymarket.com/events?limit=20&active=true&archived=false&tag_slug=middle-east&closed=false&order=volume24hr&ascending=false&offset=0"
+url = "https://gamma-api.polymarket.com/events?limit=20&active=true&archived=false&closed=false&order=startDate&ascending=false&offset=0&exclude_tag_id=100639"
 # postReq = requests.GET(url,json=query)
 postReq = requests.get(url)
 markets = postReq.json()
@@ -77,7 +77,7 @@ while True:
 
     if changed == True:
         # #GO CRAZY
-        returnObj = [changedMarket['title'],changedMarket['startDate'],changedMarket['icon']]
+        returnObj = [changedMarket['title'],changedMarket['creationDate'],changedMarket['image']]
         webhook = DiscordWebhook(url ="https://discord.com/api/webhooks/816987768013717514/mWa8D2QrFVVSawdb90upxM3xD8mwDd-IY4osf9iyAM-GSFC1kysfKTfmQkQF859jgZhC",content = "``` New Market \n Name: {} \n Creation Time: {} ```".format(returnObj[0],returnObj[1]))
         response = webhook.execute()
         print("GO CRAZY")
