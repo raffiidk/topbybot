@@ -31,7 +31,7 @@ def writejson(write): #Send data to JSON file - used to update the stock numbers
 def check(last,checkval): #Check for a change in the latest stock reading and the current stock reading
     changeDetected = False
     newMarket = 0
-    titles = []
+    ids = []
     for j in last:
         ids.append(j['id'])
 
