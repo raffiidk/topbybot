@@ -40,10 +40,15 @@ def check(last,checkval): #Check for a change in the latest stock reading and th
     if checkval != last:
         
         for i in checkval:
-            if i['id'] not in ids:
-                changeDetected = True
-                newMarket = i
-                return changeDetected, newMarket
+            try:
+                if i['id'] not in ids:
+                    changeDetected = True
+                    newMarket = i
+                    return changeDetected, newMarket
+            except:
+                print("errrrr list: {} i: {}".format(ids,i))
+                print(last)
+                print(checkval)
     return changeDetected, newMarket
             
     
